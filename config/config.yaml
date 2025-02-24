@@ -1,0 +1,52 @@
+  app:
+    name: 'fullstack-simple-app'
+    version: '1.0.0'
+
+  http:
+    port: '8080'
+    read-timeout: '10s'
+    write-timeout: '10s'
+    cors:
+      debug: true
+      allowed-methods: [ "GET", "POST", "PATCH", "PUT", "OPTIONS", "DELETE" ]
+      allowed-origins: ["*"]
+      allow-credentials: true
+      allowed-headers:
+        - "Authorization"
+        - "Location"
+        - "Charset"
+        - "Access-Control-Allow-Origin"
+        - "Content-Type"
+        - "Origin"
+        - "Accept"
+        - "Content-Length"
+        - "Accept-Encoding"
+        - "X-CSRF-Token"
+      options-passthrough: false
+      exposed-headers:
+        - "Location"
+        - "Authorization"
+        - "Content-Disposition"
+
+  logger:
+    log_level: 'debug'
+
+  postgres:
+    pool_max: 2
+    db_source: postgres://-:-@localhost:5432/simple_fullstack_app
+
+  mailer:
+    smtp:
+      sender_mail: "-@gmail.com"
+      sender_name: "-@gmail.com"
+      sender_password: "----"
+      smtp_server: "smtp.gmail.com"
+      smtp_port: 587
+
+  redis:
+    addr: "redis:6379"
+    password: "myredispass"
+    db: 0
+
+  token_key:
+    token_symmetric_key: "12345678901234567890123456789012"

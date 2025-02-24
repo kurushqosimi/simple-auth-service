@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:17.2-alpine3.21
+    environment:
+      - POSTGRES_USER=kurush
+      - POSTGRES_PASSWORD=kurush
+      - POSTGRES_DB=simple_fullstack_app
+
+  redis:
+    image: redis:7-alpine
+    environment:
+      - REDIS_PASSWORD=myredispass
+    command: ["redis-server", "--requirepass", "myredispass"]
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_SOURCE=postgres://-:-@postgres:5432/simple_fullstack_app?sslmode=disable
+      - REDIS_ADDRESS=redis:6379
+      - REDIS_PASSWORD=myredispass
+    depends_on:
+      - postgres
+      - redis
+    entrypoint: [ "/app/wait-for.sh", "postgres:5432", "--", "/app/start.sh" ]
+    command: [ "/app/main" ]
