@@ -75,7 +75,6 @@ backend/
 ├── go.sum
 └── README.md                # Текущее руководство
 ```
-```markdown
 ## Запуск
 
 **Клонировать репозиторий**:
@@ -166,9 +165,5 @@ docker-compose exec api ./migrate -path /app/migrations -database "$DB_SOURCE" u
 - При работе с браузером токен можно хранить либо в **localStorage** (проще, но уязвимо для XSS), либо в **HttpOnly-cookie** (безопаснее, но сложнее настройка).
 
 ---
-
-## Лицензия
-
-Если не указано иное, код распространяется под **MIT License** или другой свободной лицензией. Вы можете изменить её на любую удобную.
 
 **Enjoy building and improving the Simple Authorization Service!**
