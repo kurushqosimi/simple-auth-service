@@ -172,4 +172,3 @@ docker-compose exec api ./migrate -path /app/migrations -database "$DB_SOURCE" u
 Если не указано иное, код распространяется под **MIT License** или другой свободной лицензией. Вы можете изменить её на любую удобную.
 
 **Enjoy building and improving the Simple Authorization Service!**
-```
